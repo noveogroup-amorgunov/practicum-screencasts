@@ -1,0 +1,22 @@
+.input {
+  padding: 15px 0 0 0;
+  max-width: 300px;
+  width: 220px;
+}
+
+.input__input {
+  width: 100%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border-radius: var(--message-border-radius);
+  background: var(--message-my-background);
+  border: 0;
+  margin-bottom: 5px;
+}
+
+.input__error {
+  color: rgba(241, 18, 18, 0.8);
+  font-size: 12px;
+  text-align: center;
+  height: 12px;
+}

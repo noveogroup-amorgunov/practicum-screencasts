@@ -1,0 +1,21 @@
+{
+  "name": "practicum-screencasts-handlebars-components",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/pages/**/*.hbs --no-cache",
+    "build": "parcel build src/pages/index.hbs --no-cache --public-url ./"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "parcel": "2.4.0",
+    "postcss": "8.4.12",
+    "postcss-import": "14.1.0",
+    "postcss-nested": "5.0.6"
+  }
+}

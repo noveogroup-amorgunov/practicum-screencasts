@@ -1,0 +1,16 @@
+---
+screenTitle: Login
+fullScreen: true
+---
+
+{{!< base}}
+
+<main>
+  <form class="login-form form">
+    {{> "input/input" placeholder="Login" type="text" id="login" }}
+
+    {{> "input/input" placeholder="Password" type="password" id="password" }}
+
+    {{> "button/button" text="Login" }}
+  </form>
+</main>

@@ -1,0 +1,27 @@
+@import './variables.css';
+@import './layouts/base.css';
+@import './partials/button/button.css';
+@import './partials/input/input.css';
+@import './partials/link/link.css';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  background: var(--message-background);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
+}
