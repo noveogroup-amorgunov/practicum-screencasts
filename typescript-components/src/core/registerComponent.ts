@@ -6,7 +6,7 @@ interface BlockConstructable<Props = any> {
 }
 
 export default function registerComponent<Props = any>(Component: BlockConstructable) {
-  Handlebars.registerHelper(Component.name, function ({ hash: { ref, ...hash }, data }: HelperOptions) {
+  Handlebars.registerHelper(Component.name, function ({ hash: { ref, ...hash }, data, fn }: HelperOptions) {
     if (!data.root.children) {
       data.root.children = {};
     }
@@ -25,6 +25,9 @@ export default function registerComponent<Props = any>(Component: BlockConstruct
       refs[ref] = component.getContent();
     }
 
-    return `<div data-id="${component.id}"></div>`;
+    // @ts-expect-error not this types
+    const contents = fn ? fn(this): '';
+
+    return `<div data-id="${component.id}">${contents}</div>`;
   })
 }

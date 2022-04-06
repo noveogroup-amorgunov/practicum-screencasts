@@ -47,40 +47,33 @@ export class LoginPage extends Block {
 
     // language=hbs
     return `
-    <div class="screen screen_theme_full">
-      <div class="screen__header">
-        <div class="screen__title">
-          Login
-        </div>
-      </div>
-      <div class="screen__content">
-        <form class="login-form form">
+    {{#Layout name="Login" }}
+    <form class="login-form form">
 
-          {{{Input
-            value="${values.login}"
-            error="${errors.login}"
-            ref="login"
-            id="login"
-            type="text"
-            placeholder="Login"
-          }}}
+      {{{Input
+        value="${values.login}"
+        error="${errors.login}"
+        ref="login"
+        id="login"
+        type="text"
+        placeholder="Login"
+      }}}
 
-          {{{Input
-            value="${values.password}"
-            error="${errors.password}"
-            ref="password"
-            id="password" 
-            type="password"
-            placeholder="Password"
-          }}}
+      {{{Input
+        value="${values.password}"
+        error="${errors.password}"
+        ref="password"
+        id="password" 
+        type="password"
+        placeholder="Password"
+      }}}
 
-          {{{Button
-            text="Login"
-            onClick=onLogin
-          }}}
-        </form>
-      </div>
-    </div>
+      {{{Button
+        text="Login"
+        onClick=onLogin
+      }}}
+    </form>
+  {{/Layout}}
     `;
   }
 }

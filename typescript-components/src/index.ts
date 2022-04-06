@@ -7,11 +7,15 @@ import LoginPage from './pages/login';
 
 import './app.css';
 
-const components = require('./components/**/index.ts') as {[key: string]: { default: typeof Block }};
+import Button from './components/button';
+import Link from './components/link';
+import Input from './components/input';
+import Layout from './components/layout';
 
-Object.values(components).forEach((component) => {
-  registerComponent(component.default);
-});
+registerComponent(Button);
+registerComponent(Link);
+registerComponent(Input);
+registerComponent(Layout);
 
 document.addEventListener("DOMContentLoaded", () => {
   renderPage(LoginPage);
