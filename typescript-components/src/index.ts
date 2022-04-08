@@ -1,6 +1,6 @@
 require("babel-core/register");
 
-import { Block, renderPage, registerComponent }  from './core';
+import { renderDOM, registerComponent }  from './core';
 
 import OnboardingPage from './pages/onboarding';
 import LoginPage from './pages/login';
@@ -18,6 +18,13 @@ registerComponent(Input);
 registerComponent(Layout);
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderPage(LoginPage);
-  // renderPage(OnboardingPage);
+  // const App = new LoginPage();
+  const App = new OnboardingPage({
+    links: [
+      {to: '#signup', text: 'signup'},
+      {to: '#login', text: 'login'},
+    ]
+  });
+
+  renderDOM(App);
 });
