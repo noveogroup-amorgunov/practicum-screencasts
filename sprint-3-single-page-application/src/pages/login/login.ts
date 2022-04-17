@@ -112,5 +112,4 @@ export class LoginPage extends Block<LoginPageProps> {
   }
 }
 
-// TODO: поправить типизацию хоков
 export default withRouter(withStore(LoginPage));

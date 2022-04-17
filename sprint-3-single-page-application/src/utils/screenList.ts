@@ -1,7 +1,7 @@
 import OnboardingPage from 'pages/onboarding';
 import LoginPage from 'pages/login';
 import ProfilePage from 'pages/profile';
-import { Block } from 'core';
+import { BlockClass } from 'core';
 
 export enum Screens {
   Onboarding = 'onboadring',
@@ -9,12 +9,12 @@ export enum Screens {
   Profile = 'profile',
 }
 
-const map: Record<Screens, typeof Block> = {
+const map: Record<Screens, BlockClass<any>> = {
   [Screens.Onboarding]: OnboardingPage,
   [Screens.Login]: LoginPage,
   [Screens.Profile]: ProfilePage,
 };
 
-export const getScreenComponent = (screen: Screens): typeof Block => {
+export const getScreenComponent = (screen: Screens): BlockClass<any> => {
   return map[screen];
 };

@@ -44,5 +44,4 @@ export class ProfilePage extends Block<ProfilePageProps> {
   }
 }
 
-// TODO: поправить типизацию хоков
 export default withRouter(withStore(ProfilePage));

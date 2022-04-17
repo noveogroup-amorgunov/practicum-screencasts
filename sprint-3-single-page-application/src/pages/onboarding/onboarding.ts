@@ -54,5 +54,4 @@ export class OnboardingPage extends Block<OnboardingPageProps> {
   }
 }
 
-// TODO: поправить типизацию хоков
 export default withRouter(withStore(OnboardingPage));

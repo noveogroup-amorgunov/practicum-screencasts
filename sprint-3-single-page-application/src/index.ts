@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (prevState.screen !== nextState.screen) {
       const Page = getScreenComponent(nextState.screen);
-      renderDOM(new Page());
+      renderDOM(new Page({}));
     }
   });
 
