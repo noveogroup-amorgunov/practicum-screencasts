@@ -18,13 +18,15 @@ registerComponent(Input);
 registerComponent(Layout);
 
 document.addEventListener("DOMContentLoaded", () => {
-  // const App = new LoginPage();
-  const App = new OnboardingPage({
-    links: [
-      {to: '#signup', text: 'signup'},
-      {to: '#login', text: 'login'},
-    ]
-  });
+  // DEV: Расскоментировать нужно страницу для отображения
+
+  const App = new LoginPage();
+  // const App = new OnboardingPage({
+  //   links: [
+  //     {to: '#signup', text: 'signup'},
+  //     {to: '#login', text: 'login'},
+  //   ]
+  // });
 
   renderDOM(App);
 });
