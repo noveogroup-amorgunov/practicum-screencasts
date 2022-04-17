@@ -1,13 +1,14 @@
 import { Block } from 'core';
+import { withIsLoading } from 'utils';
 
 import './layout.css';
 
 interface LayoutProps {
-  isLoading?: boolean;
+  isLoading: boolean;
   fullScreen?: boolean;
 }
 
-export class Layout extends Block<LayoutProps> {
+class Layout extends Block<LayoutProps> {
   protected render(): string {
     // language=hbs
     return `
@@ -22,3 +23,7 @@ export class Layout extends Block<LayoutProps> {
     `;
   }
 }
+
+const ComposedLayout = withIsLoading(Layout);
+
+export { ComposedLayout as Layout };

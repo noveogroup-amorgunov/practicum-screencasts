@@ -6,7 +6,6 @@ type LoginPageProps = {
   router: HashRouter;
   store: Store<AppState>;
   formError?: () => string | null;
-  isLoading?: () => boolean;
 };
 
 export class LoginPage extends Block<LoginPageProps> {
@@ -15,7 +14,6 @@ export class LoginPage extends Block<LoginPageProps> {
 
     this.setProps({
       formError: () => this.props.store.getState().loginFormError,
-      isLoading: () => Boolean(this.props.store.getState().isLoading),
     });
   }
 
@@ -80,7 +78,7 @@ export class LoginPage extends Block<LoginPageProps> {
 
     // language=hbs
     return `
-    {{#Layout name="Login" isLoading=isLoading fullScreen=true}}
+    {{#Layout name="Login" fullScreen=true}}
       <form class="login-form form">
 
         {{{Input
