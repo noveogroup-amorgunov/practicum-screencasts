@@ -1,0 +1,21 @@
+.icon {
+  position: relative;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+.icon:hover::before {
+  content: "";
+  width: 28px;
+  height: 28px;
+  z-index: -1;
+  background: #fdf1f5;
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: -2px;
+  border-radius: 5px;
+}
+

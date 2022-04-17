@@ -58,6 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .use('#login', () => store.dispatch({ screen: Screens.Login }))
     .use('#onboarding', () => store.dispatch({ screen: Screens.Onboarding }))
     .use('#profile', () => store.dispatch({ screen: Screens.Profile }))
+    .use('#chats', () => store.dispatch({ screen: Screens.Chats }))
+    .use('#messanger', () => store.dispatch({ screen: Screens.Messanger }))
     .use('#', () => store.dispatch({ screen: Screens.Onboarding }))
     .onRouteChange();
 

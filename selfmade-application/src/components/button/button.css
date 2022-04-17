@@ -1,12 +1,17 @@
 .button {
-  margin: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .button__button {
-  background: var(--message-background);
+  background: #f53c5b;
   border: none;
   cursor: pointer;
   color: white;
+  display: block;
+  font-weight: 700;
+  width: 90%;
   padding: 15px 32px;
   font-size: 14px;
   border-radius: 20px;

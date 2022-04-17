@@ -4,7 +4,6 @@ import { HashRouter, Store, Block } from 'core';
 type OnboardingPageProps = {
   router: HashRouter;
   store: Store<AppState>;
-  isLoading?: () => void;
   onToggleAppLoading?: () => void;
   navigateToLogin?: () => void;
 };
@@ -14,7 +13,6 @@ export class OnboardingPage extends Block<OnboardingPageProps> {
     super(props);
 
     this.setProps({
-      isLoading: () => Boolean(this.props.store.getState().isLoading),
       onToggleAppLoading: () => this.onToggleAppLoading(),
       navigateToLogin: () => this.props.router.go('#login'),
     });
@@ -36,7 +34,7 @@ export class OnboardingPage extends Block<OnboardingPageProps> {
 
   render() {
     return `
-    {{#Layout name="Onboarding" fullScreen=true isLoading=isLoading}}
+    {{#Layout name="Onboarding" fullScreen=true}}
       {{{Button text="Login" onClick=navigateToLogin}}}
       <div>
         {{#each links}}
@@ -54,5 +52,4 @@ export class OnboardingPage extends Block<OnboardingPageProps> {
   }
 }
 
-// TODO: поправить типизацию хоков
 export default withRouter(withStore(OnboardingPage));

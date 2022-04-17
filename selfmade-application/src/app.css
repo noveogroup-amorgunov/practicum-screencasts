@@ -8,6 +8,7 @@ body {
 body {
   font-family: sans-serif;
   background: var(--message-background);
+  background: linear-gradient(45deg, #fedcfa, #fddcdd);
 
   display: flex;
   flex-direction: column;

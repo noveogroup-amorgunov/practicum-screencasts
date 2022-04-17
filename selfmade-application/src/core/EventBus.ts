@@ -24,6 +24,10 @@ export default class EventBus<
     );
   }
 
+  destroy() {
+    this.listeners = {};
+  }
+
   emit(event: E, ...args: M[E]) {
     if (!this.listeners[event]) {
       return;
