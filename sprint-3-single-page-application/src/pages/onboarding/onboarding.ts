@@ -1,6 +1,8 @@
 import { withStore, withRouter, withIsLoading } from 'utils';
 import { HashRouter, Store, Block } from 'core';
 
+import './styles.css';
+
 type OnboardingPageProps = {
   router: HashRouter;
   store: Store<AppState>;
@@ -36,19 +38,19 @@ export class OnboardingPage extends Block<OnboardingPageProps> {
   }
 
   render() {
+    const user = this.props.store.getState().user;
+
     return `
     {{#Layout name="Onboarding" fullScreen=true}}
-      {{{Button text="Enter" onClick=onNavigateNext}}}
-      <div>
-        {{#each links}}
-          {{#with this}}
-            {{{Link text="{{text}}" to="{{to}}"}}}
-          {{/with}}
-        {{/each}}
-      </div>
-      {{{Button text="Toggle app loading" onClick=onToggleAppLoading}}}
-      <div>
-        isLoading: {{isLoading}}
+      <div class="onboarding-screen__content">
+        <div class="onboarding-screen__title">
+          Get started
+        </div>
+        <div class="onboarding-screen__description">
+          Demo project of Practicum course "Middle frontend developer". You can use <strong>johnjoe2/johnjoe2</strong> as a test credentials.
+        </div>
+        {{{Button text="${user ? 'Profile': 'Login'}" onClick=onNavigateNext}}}
+        {{{Button text="Toggle app loading" onClick=onToggleAppLoading}}}
       </div>
     {{/Layout}}
     `;

@@ -1,22 +1,37 @@
 .input {
   padding: 15px 0 0 0;
-  max-width: 300px;
-  width: 220px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input__label {
+  padding: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 14px;
+
+  order: 1;
 }
 
 .input__input {
   width: 100%;
-  padding: 12px 20px;
+  padding: 15px 20px;
   box-sizing: border-box;
-  border-radius: var(--message-border-radius);
+  border-radius: 10px;
   background: var(--message-my-background);
   border: 0;
   margin-bottom: 5px;
+
+  order: 2;
 }
 
 .input__error {
   color: rgba(241, 18, 18, 0.8);
   font-size: 12px;
-  text-align: center;
+  padding-left: 5px;
   height: 12px;
+
+  order: 3;
 }

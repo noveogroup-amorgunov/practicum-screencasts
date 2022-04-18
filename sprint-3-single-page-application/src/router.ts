@@ -52,7 +52,6 @@ export function initRouter(router: HashRouter, store: Store<AppState>) {
     }
     
     if (prevState.screen !== nextState.screen) {
-      console.log(`change route to ${nextState.screen}`)
       const Page = getScreenComponent(nextState.screen);
       renderDOM(new Page({}));
     }

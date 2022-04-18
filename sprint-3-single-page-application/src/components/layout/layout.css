@@ -21,19 +21,14 @@
   }
 }
 
-.screen_type_splash .screen__content {
-  background: black;
+.screen__logo {
+  position: absolute;
+  left: 25px;
+  top: 25px;
 }
 
-.screen_type_splash .screen__content::after {
-  content: '';
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  background-size: cover;
-  background: url('../../favicon.png');
+.screen_type_splash .screen__content {
+  background: black;
 }
 
 .screen_loading::after {

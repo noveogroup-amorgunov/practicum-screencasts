@@ -6,6 +6,7 @@ interface InputProps {
   onChange?: () => void;
   type?: 'text' | 'password' | 'email';
   placeholder?: string;
+  label?: string;
   value?: string;
   error?: string;
 }
@@ -19,8 +20,9 @@ export class Input extends Block {
     error,
     placeholder,
     value,
+    label,
   }: InputProps) {
-    super({ type, placeholder, value, error, events: { input: onChange } });
+    super({ type, placeholder, value, error, label, events: { input: onChange } });
   }
 
   protected render(): string {
@@ -28,6 +30,7 @@ export class Input extends Block {
     return `
       <div class="input">
         <input class="input__input" type="{{type}}" placeholder="{{placeholder}}" value="{{value}}">
+        {{#if label}}<div class="input__label">{{label}}</div>{{/if}}
         <div class="input__error">{{#if error}}{{error}}{{/if}}</div>
       </div>
     `;

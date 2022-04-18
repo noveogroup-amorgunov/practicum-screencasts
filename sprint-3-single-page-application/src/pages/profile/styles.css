@@ -15,7 +15,6 @@
   background: #fff;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
-  padding: 30px;
   padding-top: 10px;
   box-sizing: border-box;
   overflow-y: auto;
@@ -27,17 +26,17 @@
 .profile-screen__title {
   font-size: 34px;
   font-weight: 900;
-  padding-bottom: 5px;
-  padding-top: 20px;
   position: sticky;
   top: -15px;
   background: #fff;
+  padding: 20px 30px 5px 30px;
 }
 
 .profile-screen__info {
   display: flex;
   flex-direction: column;
   margin: 5px 0;
+  padding: 0px 30px;
 }
 
 .profile-screen__info-wrapper {

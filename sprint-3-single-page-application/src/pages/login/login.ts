@@ -81,7 +81,8 @@ export class LoginPage extends Block<LoginPageProps> {
           ref="login"
           id="login"
           type="text"
-          placeholder="Login"
+          placeholder="awesome@mail.com"
+          label="Login"
         }}}
 
         {{{Input
@@ -91,6 +92,7 @@ export class LoginPage extends Block<LoginPageProps> {
           id="password" 
           type="password"
           placeholder="Password"
+          label="Password"
         }}}
 
         {{{Button
