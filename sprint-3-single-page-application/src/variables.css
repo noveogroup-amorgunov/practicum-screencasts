@@ -1,3 +1,5 @@
+@custom-media --mobile-viewport (max-width: 480px);
+
 :root {
   --message-background: #1f9af3;
   --message-color: #fff;
