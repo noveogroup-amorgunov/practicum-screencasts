@@ -47,7 +47,8 @@ export class OnboardingPage extends Block<OnboardingPageProps> {
           Get started
         </div>
         <div class="onboarding-screen__description">
-          Demo project of Practicum course "Middle frontend developer". You can use <strong>johnjoe2/johnjoe2</strong> as a test credentials.
+          <p>Demo project of Practicum course «Middle frontend developer». You can use <strong>johnjoe2/johnjoe2</strong> as a test credentials.</p>
+          <p>To work correctly on iOS, you need to turn it off «Prevent cross-site tracking». This is necessary to store the auth cookie on practicum domain</p>
         </div>
         {{{Button text="${user ? 'Profile': 'Login'}" onClick=onNavigateNext}}}
         {{{Button text="Toggle app loading" onClick=onToggleAppLoading}}}
