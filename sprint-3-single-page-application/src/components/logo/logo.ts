@@ -8,6 +8,8 @@ interface LogoProps {
 }
 
 export class Logo extends Block {
+  static componentName = 'Logo';
+
   constructor(props: LogoProps) {
     super({ ...props, events: { click: props.onClick } });
   }

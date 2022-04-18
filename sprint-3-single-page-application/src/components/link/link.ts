@@ -9,6 +9,8 @@ interface LinkProps {
 }
 
 export class Link extends Block {
+  static componentName = 'Link';
+
   constructor(props: LinkProps) {
     super({ ...props, events: { click: props.onClick } });
   }
