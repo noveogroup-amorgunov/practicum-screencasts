@@ -12,6 +12,8 @@ type OnboardingPageProps = {
 };
 
 export class OnboardingPage extends Block<OnboardingPageProps> {
+  static componentName = 'OnboardingPage';
+
   constructor(props: OnboardingPageProps) {
     super(props);
 

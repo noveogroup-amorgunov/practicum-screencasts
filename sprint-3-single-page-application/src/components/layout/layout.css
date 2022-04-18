@@ -25,6 +25,7 @@
   position: absolute;
   left: 25px;
   top: 25px;
+  cursor: pointer;
 }
 
 .screen_type_splash .screen__content {
