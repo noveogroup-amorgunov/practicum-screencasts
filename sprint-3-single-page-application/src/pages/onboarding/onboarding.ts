@@ -6,7 +6,7 @@ type OnboardingPageProps = {
   store: Store<AppState>;
   isLoading: boolean;
   onToggleAppLoading?: () => void;
-  navigateToLogin?: () => void;
+  onNavigateNext?: () => void;
 };
 
 export class OnboardingPage extends Block<OnboardingPageProps> {
@@ -15,8 +15,16 @@ export class OnboardingPage extends Block<OnboardingPageProps> {
 
     this.setProps({
       onToggleAppLoading: () => this.onToggleAppLoading(),
-      navigateToLogin: () => this.props.router.go('#login'),
+      onNavigateNext: () => this.onNavigateNext(),
     });
+  }
+
+  onNavigateNext() {
+    if (this.props.store.getState().user) {
+      this.props.router.go('#profile');
+    } else {
+      this.props.router.go('#login');
+    }
   }
 
   onToggleAppLoading() {
@@ -27,16 +35,10 @@ export class OnboardingPage extends Block<OnboardingPageProps> {
     }, 2000);
   }
 
-  componentDidMount() {
-    if (this.props.store.getState().user) {
-      this.props.router.go('#profile');
-    }
-  }
-
   render() {
     return `
     {{#Layout name="Onboarding" fullScreen=true}}
-      {{{Button text="Login" onClick=navigateToLogin}}}
+      {{{Button text="Enter" onClick=onNavigateNext}}}
       <div>
         {{#each links}}
           {{#with this}}

@@ -21,12 +21,6 @@ export class ProfilePage extends Block<ProfilePageProps> {
     });
   }
 
-  componentDidMount() {
-    if (!this.props.store.getState().user) {
-      this.props.router.go('#onboarding');
-    }
-  }
-
   render() {
     return `
     {{#Layout name="Profile" fullScreen=true}}

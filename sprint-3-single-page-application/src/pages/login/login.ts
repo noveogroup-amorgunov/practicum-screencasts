@@ -17,12 +17,6 @@ export class LoginPage extends Block<LoginPageProps> {
     });
   }
 
-  componentDidMount() {
-    if (this.props.store.getState().user) {
-      this.props.router.go('#profile');
-    }
-  }
-
   protected getStateFromProps() {
     this.state = {
       values: {

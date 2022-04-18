@@ -4,7 +4,9 @@ import type { Dispatch } from 'core';
 import { transformUser, apiHasError } from 'utils';
 
 export async function initApp(dispatch: Dispatch<AppState>) {
-  dispatch({ isLoading: true });
+
+  // Ручкая задержка для демонстрации загрузочного экрана
+  await new Promise(r => setTimeout(r, 500));
 
   try {
     const response = await authAPI.me();
@@ -17,6 +19,6 @@ export async function initApp(dispatch: Dispatch<AppState>) {
   } catch (err) {
     console.error(err);
   } finally {
-    dispatch({ isLoading: false });
+    dispatch({ appIsInited: true });
   }
 }

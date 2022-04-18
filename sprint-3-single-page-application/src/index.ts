@@ -2,8 +2,9 @@ require('babel-core/register');
 
 import { renderDOM, registerComponent, HashRouter, Store } from 'core';
 import { initApp } from './services/initApp';
-import { getScreenComponent, Screens } from './utils';
 import { defaultState } from './store';
+import { initRouter } from './router';
+import SplashScreen from 'pages/splash';
 
 import './app.css';
 
@@ -31,10 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.router = router;
   window.store = store;
 
-  /**
-   * Глобальный слушатель изменений в сторе
-   * для переключения активного экрана
-   */
+  renderDOM(new SplashScreen({}));
+
   store.on('changed', (prevState, nextState) => {
     if (process.env.DEBUG) {
       console.log(
@@ -43,22 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
         nextState,
       );
     }
-
-    if (prevState.screen !== nextState.screen) {
-      const Page = getScreenComponent(nextState.screen);
-      renderDOM(new Page({}));
-    }
   });
 
   /**
-   * Инициализируем роутинг
+   * Инициализируем роутер
    */
-  router
-    .use('#login', () => store.dispatch({ screen: Screens.Login }))
-    .use('#onboarding', () => store.dispatch({ screen: Screens.Onboarding }))
-    .use('#profile', () => store.dispatch({ screen: Screens.Profile }))
-    .use('#', () => store.dispatch({ screen: Screens.Onboarding }))
-    .onRouteChange();
+  initRouter(router, store);
 
   /**
    * Загружаем данные для приложения

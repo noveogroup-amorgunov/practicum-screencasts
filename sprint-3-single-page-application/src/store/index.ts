@@ -1,6 +1,7 @@
 export const defaultState: AppState = {
+  appIsInited: false,
+  isLoading: false,
   screen: null,
-  isLoading: true,
   loginFormError: null,
   user: null,
 };

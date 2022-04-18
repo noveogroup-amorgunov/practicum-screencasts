@@ -2,22 +2,32 @@
  * @warning в работах нужно реализовать обычный Router.
  */
 export class HashRouter {
-  routes: Record<string, Function> = {};
+  private routes: Record<string, Function> = {};
 
-  constructor() {
-    window.addEventListener('hashchange', () => this.onRouteChange());
+  private isStarted = false;
+
+  start() {
+    if (!this.isStarted) {
+      this.isStarted = true;
+      window.addEventListener('hashchange', () => this.onRouteChange());
+      this.onRouteChange();
+    }
   }
 
   onRouteChange() {
     const { hash } = window.location;
 
-    Object.entries(this.routes).some(([routeHash, callback]) => {
+    const found = Object.entries(this.routes).some(([routeHash, callback]) => {
       if (routeHash === hash) {
         callback();
         return true;
       }
       return false;
     });
+
+    if (!found && this.routes['*']) {
+      this.routes['*']();
+    }
   }
 
   use(hash: string, callback: Function) {

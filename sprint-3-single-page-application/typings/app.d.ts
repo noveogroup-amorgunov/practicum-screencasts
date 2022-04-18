@@ -7,6 +7,7 @@ declare global {
   export type Indexed = { [key: string]: any };
 
   export type AppState = {
+    appIsInited: boolean;
     screen: Screens | null;
     isLoading: boolean;
     loginFormError: string | null;
