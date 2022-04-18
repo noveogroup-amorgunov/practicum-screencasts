@@ -9,6 +9,8 @@ type LoginPageProps = {
 };
 
 export class LoginPage extends Block<LoginPageProps> {
+  static componentName = 'LoginPage';
+
   constructor(props: LoginPageProps) {
     super(props);
 

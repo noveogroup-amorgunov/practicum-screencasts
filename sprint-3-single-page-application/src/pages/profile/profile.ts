@@ -13,6 +13,8 @@ type ProfilePageProps = {
 };
 
 export class ProfilePage extends Block<ProfilePageProps> {
+  static componentName = 'ProfilePage';
+
   constructor(props: ProfilePageProps) {
     super(props);
 
