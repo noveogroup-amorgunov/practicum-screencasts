@@ -7,6 +7,7 @@
     "start": "parcel src/index.html --no-source-maps",
     "build": "parcel build src/index.html --no-source-maps --no-cache --public-url ./"
   },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "keywords": [],
   "author": "",
   "license": "MIT",
