@@ -2,7 +2,7 @@ require('babel-core/register');
 
 import { renderDOM, registerComponent, HashRouter, Store } from 'core';
 import { initApp } from './services/initApp';
-import { diffObjectsDeep, getScreenComponent, Screens } from './utils';
+import { getScreenComponent, Screens } from './utils';
 import { defaultState } from './store';
 
 import './app.css';
@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'background: #222; color: #bada55',
         nextState,
       );
-      console.log(JSON.stringify(diffObjectsDeep.map(prevState, nextState)));
     }
 
     if (prevState.screen !== nextState.screen) {
@@ -64,7 +63,5 @@ document.addEventListener('DOMContentLoaded', () => {
   /**
    * Загружаем данные для приложения
    */
-  setTimeout(() => {
-    store.dispatch(initApp);
-  }, 100);
+  store.dispatch(initApp);
 });

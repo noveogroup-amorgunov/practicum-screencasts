@@ -1,9 +1,10 @@
-import { withStore, withRouter } from 'utils';
+import { withStore, withRouter, withIsLoading } from 'utils';
 import { HashRouter, Store, Block } from 'core';
 
 type OnboardingPageProps = {
   router: HashRouter;
   store: Store<AppState>;
+  isLoading: boolean;
   onToggleAppLoading?: () => void;
   navigateToLogin?: () => void;
 };
@@ -52,4 +53,4 @@ export class OnboardingPage extends Block<OnboardingPageProps> {
   }
 }
 
-export default withRouter(withStore(OnboardingPage));
+export default withRouter(withStore(withIsLoading(OnboardingPage)));
