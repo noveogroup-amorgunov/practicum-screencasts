@@ -2,7 +2,6 @@
   width: 28px;
   height: 30px;
   position: relative;
-  filter: blur(0.2px);
 }
 
 .logo_type_black .logo__top,
