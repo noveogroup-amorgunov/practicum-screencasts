@@ -6,13 +6,14 @@ import './layout.css';
 interface LayoutProps {
   isLoading: boolean;
   fullScreen?: boolean;
+  splash?: boolean;
 }
 
 class Layout extends Block<LayoutProps> {
   protected render(): string {
     // language=hbs
     return `
-      <div class="screen {{#if fullScreen}}screen_theme_full{{/if}} {{#if isLoading}}screen_loading{{/if}}">
+      <div class="screen{{#if splash}} screen_type_splash{{/if}}{{#if fullScreen}} screen_theme_full{{/if}}{{#if isLoading}} screen_loading{{/if}}">
         <div class="screen__header">
           <div class="screen__title">
             {{title}}
