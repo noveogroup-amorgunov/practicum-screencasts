@@ -1,0 +1,24 @@
+.button {
+  margin: 10px 0;
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.button__button {
+  background: var(--message-background);
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 15px 32px;
+  font-size: 14px;
+  border-radius: 20px;
+  font-weight: 600;
+
+  width: 90%;
+}
+
+.button__button:hover {
+  opacity: 0.8;
+}
