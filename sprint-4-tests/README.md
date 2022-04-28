@@ -1,6 +1,6 @@
-# sprint-3-single-page-application
+# sprint-4-test
 
-Каркас SPA проекта с интеграцией API практикума.
+Инфраструктура для написания юнит и интеграционных тестов.
 
 ## Разработка
 
@@ -12,8 +12,8 @@ npm install
 npm start
 ```
 
-### Доступные страницы:
+Для запуска тестов:
 
-- http://locathost:1234#onboarding
-- http://locathost:1234#login
-- http://locathost:1234#profile
+```
+npm test
+```
