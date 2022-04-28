@@ -24,6 +24,14 @@ export class ProfilePage extends Block<ProfilePageProps> {
   }
 
   render() {
+    if (!this.props.user) {
+      return `
+        {{#Layout name="Profile" fullScreen=true}}
+          no authorized user
+        {{/Layout}}
+      `
+    }
+
     return `
     {{#Layout name="Profile" fullScreen=true}}
       <div class="profile-screen">
