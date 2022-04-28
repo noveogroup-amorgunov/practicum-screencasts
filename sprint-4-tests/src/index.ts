@@ -1,4 +1,5 @@
 require('babel-core/register');
+import 'regenerator-runtime/runtime';
 
 import { renderDOM, registerComponent, HashRouter, Store } from 'core';
 import { initApp } from './services/initApp';

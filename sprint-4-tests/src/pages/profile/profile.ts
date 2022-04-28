@@ -71,7 +71,7 @@ export class ProfilePage extends Block<ProfilePageProps> {
               </div>
             </div>
           </div>
-          {{{Button text="Logout" onClick=onLogout}}}
+          {{{Button dataTestId="logout-btn" text="Logout" onClick=onLogout}}}
         </div>
       </div>
     {{/Layout}}

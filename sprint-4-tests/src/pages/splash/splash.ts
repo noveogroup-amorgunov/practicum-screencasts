@@ -8,7 +8,9 @@ export class SplashPage extends Block<SplashPageProps> {
   render() {
     return `
     {{#Layout name="Splash screen" fullScreen=true splash=true}}
-      {{{Logo}}}
+      <div data-testid="splash-logo">
+        {{{Logo}}}
+      </div>
     {{/Layout}}
     `;
   }

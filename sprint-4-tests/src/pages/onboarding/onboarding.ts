@@ -44,7 +44,7 @@ export class OnboardingPage extends Block<OnboardingPageProps> {
 
     return `
     {{#Layout name="Onboarding" fullScreen=true}}
-      <div class="onboarding-screen__content">
+      <div class="onboarding-screen__content" data-testid="onboarding-screen">
         <div class="onboarding-screen__title">
           Get started
         </div>

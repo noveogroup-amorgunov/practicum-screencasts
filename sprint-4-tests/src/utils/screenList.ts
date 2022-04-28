@@ -4,7 +4,7 @@ import ProfilePage from 'pages/profile';
 import { BlockClass } from 'core';
 
 export enum Screens {
-  Onboarding = 'onboadring',
+  Onboarding = 'onboarding',
   Login = 'login',
   Profile = 'profile',
 }
