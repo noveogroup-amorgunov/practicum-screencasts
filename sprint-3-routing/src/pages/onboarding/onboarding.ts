@@ -14,7 +14,7 @@ export class OnboardingPage extends Block<OnboardingPageProps> {
 
     this.setProps({
       onToggleAppLoading: () => this.onToggleAppLoading(),
-      navigateToLogin: () => this.props.router.go('#login'),
+      navigateToLogin: () => this.props.router.go('/login'),
     });
   }
 
@@ -28,11 +28,12 @@ export class OnboardingPage extends Block<OnboardingPageProps> {
 
   componentDidMount() {
     if (this.props.store.getState().user) {
-      this.props.router.go('#profile');
+      this.props.router.go('/profile');
     }
   }
 
   render() {
+    console.log(this.props.idPath)
     return `
     {{#Layout name="Onboarding" fullScreen=true}}
       {{{Button text="Login" onClick=navigateToLogin}}}

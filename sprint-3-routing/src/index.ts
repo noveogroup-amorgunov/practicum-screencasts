@@ -1,6 +1,6 @@
 require('babel-core/register');
 
-import { renderDOM, registerComponent, HashRouter, Store } from 'core';
+import { renderDOM, registerComponent, Store, BrowseRouter } from 'core';
 import { initApp } from './services/initApp';
 import { diffObjectsDeep, getScreenComponent, Screens } from './utils';
 import { defaultState } from './store';
@@ -16,13 +16,13 @@ Object.values(components).forEach((Component: any) => {
 declare global {
   interface Window {
     store: Store<AppState>;
-    router: HashRouter;
+    router: BrowseRouter;
   }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   const store = new Store<AppState>(defaultState);
-  const router = new HashRouter();
+  const router = new BrowseRouter();
 
   /**
    * Помещаем роутер и стор в глобальную область для доступа в хоках with*
@@ -54,13 +54,22 @@ document.addEventListener('DOMContentLoaded', () => {
   /**
    * Инициализируем роутинг
    */
-  router
-    .use('#login', () => store.dispatch({ screen: Screens.Login }))
-    .use('#onboarding', () => store.dispatch({ screen: Screens.Onboarding }))
-    .use('#profile', () => store.dispatch({ screen: Screens.Profile }))
-    .use('#', () => store.dispatch({ screen: Screens.Onboarding }))
-    .onRouteChange();
 
+  router
+    .use('/login', getScreenComponent(Screens.Login))
+    .use('/onboarding', getScreenComponent(Screens.Onboarding))
+    .use('/profile/', getScreenComponent(Screens.Profile))
+    .use('/', getScreenComponent(Screens.Onboarding))
+    .use('*', getScreenComponent(Screens.Login))
+    .start()
+/**
+  url /onboarding/23/book
+  pathname /onboarding/book
+
+
+  
+ *  */ 
+  
   /**
    * Загружаем данные для приложения
    */

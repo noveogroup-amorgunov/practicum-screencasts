@@ -19,7 +19,7 @@ export class LoginPage extends Block<LoginPageProps> {
 
   componentDidMount() {
     if (this.props.store.getState().user) {
-      this.props.router.go('#profile');
+      this.props.router.go('/profile');
     }
   }
 
@@ -54,7 +54,7 @@ export class LoginPage extends Block<LoginPageProps> {
         if (!loginData.login) {
           hasError = true;
           nextState.errors.login = 'Login is required';
-        } else if (loginData.login.length < 4) {
+        } else if (loginData.login.length < 3) {
           hasError = true;
           nextState.errors.login = 'Login should contain more than 3 chars';
         }

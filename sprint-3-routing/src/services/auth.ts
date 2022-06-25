@@ -33,7 +33,7 @@ export const login = async (
 
   dispatch({ user: transformUser(responseUser as UserDTO) });
 
-  window.router.go('#profile');
+  window.router.go('/profile');
 };
 
 export const logout = async (dispatch: Dispatch<AppState>) => {
@@ -43,5 +43,5 @@ export const logout = async (dispatch: Dispatch<AppState>) => {
 
   dispatch({ isLoading: false, user: null });
 
-  window.router.go('#onboarding');
+  window.router.go('/onboarding');
 };

@@ -7,9 +7,13 @@
   <body>
     <div id="app"></div>
     <div>
-      <a href="#onboarding">home</a>
-      <a href="#login">login</a>
-      <a href="#profile">profile</a>
+      <button onclick="router.back()">back</button>
+      <button onclick="router.forward()">forward</button>
+    </div>
+    <div>
+      <a href="/onboarding">home</a>
+      <a href="/login">login</a>
+      <a href="/profile">profile</a>
     </div>
     <script type="module" src="./index.ts"></script>
   </body>

@@ -27,7 +27,7 @@ export class ProfilePage extends Block<ProfilePageProps> {
 
   componentDidMount() {
     if (!this.props.store.getState().user) {
-      this.props.router.go('#onboarding');
+      this.props.router.go('/onboarding');
     }
   }
 
