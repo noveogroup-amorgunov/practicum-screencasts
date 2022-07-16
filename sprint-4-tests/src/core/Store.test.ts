@@ -1,6 +1,6 @@
 import { Store } from './Store';
 
-describe('score/Store', () => {
+describe('core/Store', () => {
   it('should set state', () => {
     const store = new Store({});
 

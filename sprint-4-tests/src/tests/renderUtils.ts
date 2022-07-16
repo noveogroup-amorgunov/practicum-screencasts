@@ -3,6 +3,7 @@ import { defaultState } from 'store';
 import * as components from 'components';
 import { initRouter } from '../router';
 import { MockedHashRouter } from 'tests/MockedHashRouter';
+import { sleep } from 'utils/sleep';
 
 type RenderBlockParams<T> = {
   Block: BlockClass<T>;
@@ -10,7 +11,7 @@ type RenderBlockParams<T> = {
   state?: Partial<AppState>;
 }
 
-export function renderBlock<T extends Object>({ Block, props, state = defaultState }: RenderBlockParams<T>) {
+export async function renderBlock<T extends Object>({ Block, props, state = defaultState }: RenderBlockParams<T>) {
   Object.values(components).forEach((Component: any) => {
     registerComponent(Component);
   });
@@ -26,6 +27,13 @@ export function renderBlock<T extends Object>({ Block, props, state = defaultSta
   renderDOM(new Block(props as T));
 
   initRouter(router, store);
+
+  /**
+   * Ждем вызова componentDidMount,
+   * медота жизненного цикла компонента,
+   * который вызывается через 100мс в Block.getContent
+   */
+  await sleep();
 }
 
 export async function step(name: string, callback: () => void) {

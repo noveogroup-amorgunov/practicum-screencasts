@@ -33,6 +33,8 @@ describe('pages/Profile', () => {
       button.click();
     });
 
+    // TODO: добавить проверка показа лоадера
+
     await step('wait openning onboarding page', async () => {
       await waitFor(() =>
         expect(queryByTestId(document.body, 'onboarding-screen')).toBeInTheDocument()
