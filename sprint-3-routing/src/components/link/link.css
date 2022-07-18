@@ -1,0 +1,9 @@
+a.link {
+  color: var(--message-color);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+a.link:hover {
+  opacity: 0.6;
+}
