@@ -1,4 +1,5 @@
 import Block from '../../core/Block';
+import template from 'bundle-text:./template.hbs';
 
 import './button.css';
 
@@ -13,11 +14,6 @@ export class Button extends Block {
   }
 
   protected render(): string {
-    // language=hbs
-    return `
-      <div class="button">
-        <button class="button__button" type="button">{{text}}</button>
-      </div>
-    `;
+    return template;
   }
 }
