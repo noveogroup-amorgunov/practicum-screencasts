@@ -3,13 +3,20 @@ import template from 'bundle-text:./template.hbs';
 
 import './button.css';
 
-interface ButtonProps {
+export type IncomingProps = {
   text: string;
   onClick: () => void;
 }
 
-export class Button extends Block {
-  constructor({text, onClick}: ButtonProps) {
+export type Props = {
+  text: string;
+  events: {
+    click: () => void;
+  }
+}
+
+export class Button extends Block<Props> {
+  constructor({text, onClick}: IncomingProps) {
     super({text, events: {click: onClick}});
   }
 

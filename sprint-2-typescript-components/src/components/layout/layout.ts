@@ -2,7 +2,7 @@ import Block from '../../core/Block';
 
 import './layout.css';
 
-interface LayoutProps {}
+export interface LayoutProps {}
 
 export class Layout extends Block<LayoutProps> {
   protected render(): string {
@@ -14,7 +14,7 @@ export class Layout extends Block<LayoutProps> {
             {{title}}
           </div>
         </div>
-        <div class="screen__content" data-layout=1></div>
+        <div class="screen__content" data-slot="1"></div>
       </div>
     `
   }

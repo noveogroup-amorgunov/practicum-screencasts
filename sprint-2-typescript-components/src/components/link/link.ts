@@ -7,7 +7,7 @@ interface LinkProps {
   to: string;
 }
 
-export class Link extends Block {
+export class Link extends Block<LinkProps> {
   constructor(props: LinkProps) {
     const onClick = (e: MouseEvent) => {
       // const router = new Router();

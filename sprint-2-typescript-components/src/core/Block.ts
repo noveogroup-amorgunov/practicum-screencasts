@@ -2,13 +2,9 @@ import EventBus from './EventBus';
 import {nanoid} from 'nanoid';
 import Handlebars from 'handlebars';
 
-interface BlockMeta<P = any> {
-  props: P;
-}
-
 type Events = Values<typeof Block.EVENTS>;
 
-export default class Block<P = any> {
+export default class Block<P extends Record<string, any>, Refs extends Record<string, Block<any>> = {}> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -17,28 +13,25 @@ export default class Block<P = any> {
   } as const;
 
   public id = nanoid(6);
-  private readonly _meta: BlockMeta;
 
   protected _element: Nullable<HTMLElement> = null;
+
   protected readonly props: P;
-  protected children: {[id: string]: Block} = {};
+
+  protected children: {[id: string]: Block<{}>} = {};
 
   eventBus: () => EventBus<Events>;
 
-  protected state: any = {};
-  protected refs: {[key: string]: HTMLElement} = {};
+  // protected state: any = {};
+
+  // @ts-expect-error Тип {} не соответствует типу Record<string, Block<any>
+  protected refs: Refs = {};
 
   public constructor(props?: P) {
     const eventBus = new EventBus<Events>();
 
-    this._meta = {
-      props,
-    };
-
-    this.getStateFromProps(props)
-
     this.props = this._makePropsProxy(props || {} as P);
-    this.state = this._makePropsProxy(this.state);
+    // this.state = this._makePropsProxy(this.state);
 
     this.eventBus = () => eventBus;
 
@@ -58,9 +51,9 @@ export default class Block<P = any> {
     this._element = this._createDocumentElement('div');
   }
 
-  protected getStateFromProps(props: any): void {
-    this.state = {};
-  }
+  // protected getStateFromProps(props: any): void {
+  //   this.state = {};
+  // }
 
   init() {
     this._createResources();
@@ -86,7 +79,7 @@ export default class Block<P = any> {
     return true;
   }
 
-  setProps = (nextProps: P) => {
+  setProps = (nextProps: Partial<P>) => {
     if (!nextProps) {
       return;
     }
@@ -94,13 +87,17 @@ export default class Block<P = any> {
     Object.assign(this.props, nextProps);
   };
 
-  setState = (nextState: any) => {
-    if (!nextState) {
-      return;
-    }
+  getProps = () => {
+    return this.props;
+  }
 
-    Object.assign(this.state, nextState);
-  };
+  // setState = (nextState: any) => {
+  //   if (!nextState) {
+  //     return;
+  //   }
+
+  //   Object.assign(this.state, nextState);
+  // };
 
   get element() {
     return this._element;
@@ -195,7 +192,11 @@ export default class Block<P = any> {
      * Рендерим шаблон
      */
     const template = Handlebars.compile(this.render());
-    fragment.innerHTML = template({ ...this.state, ...this.props, children: this.children, refs: this.refs });
+    fragment.innerHTML = template({ ...this.props, children: this.children, refs: this.refs });
+
+    // console.log(`${fragment.innerHTML}`);
+
+    // debugger;
 
     /**
      * Заменяем заглушки на компоненты
@@ -221,10 +222,11 @@ export default class Block<P = any> {
       /**
        * Ищем элемент layout-а, куда вставлять детей
        */
-      const layoutContent = content.querySelector('[data-layout="1"]');
+      const slotContent = content.querySelector('[data-slot="1"]') as HTMLDivElement;
 
-      if (layoutContent && stubChilds.length) {
-        layoutContent.append(...stubChilds);
+      if (slotContent && stubChilds.length) {
+        slotContent.append(...stubChilds);
+        delete slotContent.dataset.slot;
       }
     });
 

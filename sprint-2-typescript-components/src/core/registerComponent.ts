@@ -1,11 +1,13 @@
 import Block from './Block';
 import Handlebars, { HelperOptions } from 'handlebars';
 
-interface BlockConstructable<Props = any> {
-  new(props: Props): Block;
+interface BlockConstructable<Props = any, IncomingProps = any> {
+  new(props: IncomingProps): Block<Props>;
 }
 
-export default function registerComponent<Props extends any>(Component: BlockConstructable<Props>) {
+type AnyProps = Record<string, any>
+
+export default function registerComponent<Props = AnyProps, IncomingProps = AnyProps>(Component: BlockConstructable<Props, IncomingProps>) {
   Handlebars.registerHelper(Component.name, function (this: Props, { hash: { ref, ...hash }, data, fn }: HelperOptions) {
     if (!data.root.children) {
       data.root.children = {};
@@ -32,10 +34,12 @@ export default function registerComponent<Props extends any>(Component: BlockCon
     children[component.id] = component;
 
     if (ref) {
-      refs[ref] = component.getContent();
+      refs[ref] = component;
     }
 
     const contents = fn ? fn(this): '';
+
+    // console.log(contents)
 
     return `<div data-id="${component.id}">${contents}</div>`;
   })

@@ -10,7 +10,7 @@ interface InputProps {
   error?: string;
 }
 
-export class Input extends Block {
+export class Input extends Block<InputProps> {
   constructor({onChange = () => {}, type = 'text', error, placeholder, value}: InputProps) {
     super({type, placeholder, value, error, events: {input: onChange}});
   }
