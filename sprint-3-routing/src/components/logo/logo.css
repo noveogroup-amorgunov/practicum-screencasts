@@ -1,0 +1,38 @@
+.logo {
+  width: 28px;
+  height: 30px;
+  position: relative;
+}
+
+.logo_type_black .logo__top,
+.logo_type_black .logo__left,
+.logo_type_black .logo__right {
+  background-color: #000;
+}
+
+.logo__top {
+  width: 18px;
+  background-color: #fff;
+  height: 6px;
+  position: absolute;
+  top: 0;
+  left: 5px;
+}
+
+.logo__left {
+  width: 6px;
+  background-color: #fff;
+  height: 22px;
+  position: absolute;
+  top: 6px;
+  left: 0px;
+}
+
+.logo__right {
+  width: 6px;
+  background-color: #fff;
+  height: 22px;
+  position: absolute;
+  top: 6px;
+  right: 0px;
+}

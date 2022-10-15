@@ -1,0 +1,15 @@
+.onboarding-screen__content {
+
+}
+
+.onboarding-screen__title {
+  font-size: 34px;
+  font-weight: 900;
+  padding: 10px 30px;
+}
+
+.onboarding-screen__description {
+  font-size: 14px;
+  color: #999;
+  padding: 0 30px 50px 30px;
+}
