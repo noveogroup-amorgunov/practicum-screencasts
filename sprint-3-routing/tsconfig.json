@@ -1,4 +1,7 @@
 {
+  "exclude": [
+    "./src/core/Router/Router__deprecated.ts",
+  ],
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 

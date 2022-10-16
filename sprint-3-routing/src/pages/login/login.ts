@@ -1,9 +1,9 @@
 import { withStore, withRouter } from 'utils';
 import { login } from 'services/auth';
-import { HashRouter, Store, Block } from 'core';
+import { CoreRouter, Store, Block } from 'core';
 
 type LoginPageProps = {
-  router: HashRouter;
+  router: CoreRouter;
   store: Store<AppState>;
   formError?: () => string | null;
 };

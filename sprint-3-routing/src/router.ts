@@ -1,19 +1,19 @@
-import { HashRouter, Store, renderDOM } from 'core';
+import { Store, renderDOM, CoreRouter } from 'core';
 import { getScreenComponent, Screens } from './utils';
 
 const routes = [
   {
-    path: '#onboarding',
+    path: '/onboarding',
     block: Screens.Onboarding,
     shouldAuthorized: false,
   },
   {
-    path: '#login',
+    path: '/login',
     block: Screens.Login,
     shouldAuthorized: false,
   },
   {
-    path: '#profile',
+    path: '/profile',
     block: Screens.Profile,
     shouldAuthorized: true,
   },
@@ -24,7 +24,7 @@ const routes = [
   },
 ];
 
-export function initRouter(router: HashRouter, store: Store<AppState>) {
+export function initRouter(router: CoreRouter, store: Store<AppState>) {
   routes.forEach(route => {
     router.use(route.path, () => {
       const isAuthorized = Boolean(store.getState().user);
@@ -36,7 +36,6 @@ export function initRouter(router: HashRouter, store: Store<AppState>) {
       }
 
       if (!currentScreen) {
-        console.log('go to onboarding');
         store.dispatch({ screen: Screens.Onboarding });
       }
     });

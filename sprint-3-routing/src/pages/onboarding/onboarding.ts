@@ -1,10 +1,10 @@
 import { withStore, withRouter, withIsLoading } from 'utils';
-import { HashRouter, Store, Block } from 'core';
+import { CoreRouter, Store, Block } from 'core';
 
 import './styles.css';
 
 type OnboardingPageProps = {
-  router: HashRouter;
+  router: CoreRouter;
   store: Store<AppState>;
   isLoading: boolean;
   onToggleAppLoading?: () => void;
@@ -25,9 +25,9 @@ export class OnboardingPage extends Block<OnboardingPageProps> {
 
   onNavigateNext() {
     if (this.props.store.getState().user) {
-      this.props.router.go('#profile');
+      this.props.router.go('/profile');
     } else {
-      this.props.router.go('#login');
+      this.props.router.go('/login');
     }
   }
 

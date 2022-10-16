@@ -1,7 +1,6 @@
-/**
- * @warning в работах нужно реализовать обычный Router.
- */
-export class HashRouter {
+import { CoreRouter } from "./CoreRouter";
+
+export class PathRouter implements CoreRouter {
   private routes: Record<string, Function> = {};
 
   private isStarted = false;
@@ -9,16 +8,18 @@ export class HashRouter {
   start() {
     if (!this.isStarted) {
       this.isStarted = true;
-      window.addEventListener('hashchange', () => this.onRouteChange());
+
+      window.onpopstate = (event: PopStateEvent) => {
+        this.onRouteChange.call(this);
+      };
+
       this.onRouteChange();
     }
   }
 
-  onRouteChange() {
-    const { hash } = window.location;
-
+  private onRouteChange(pathname: string = window.location.pathname) {
     const found = Object.entries(this.routes).some(([routeHash, callback]) => {
-      if (routeHash === hash) {
+      if (routeHash === pathname) {
         callback();
         return true;
       }
@@ -35,11 +36,16 @@ export class HashRouter {
     return this;
   }
 
-  go(hash: string) {
-    window.location.hash = hash;
+  go(pathname: string) {
+    window.history.pushState({}, '', pathname);
+    this.onRouteChange(pathname);
   }
 
   back() {
     window.history.back();
+  }
+
+  forward() {
+    window.history.forward();
   }
 }

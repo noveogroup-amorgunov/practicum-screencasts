@@ -1,10 +1,10 @@
-import { Block, HashRouter } from 'core';
+import { Block, CoreRouter } from 'core';
 import { withIsLoading, withRouter } from 'utils';
 
 import './layout.css';
 
 interface LayoutProps {
-  router: HashRouter;
+  router: CoreRouter;
   isLoading: boolean;
   fullScreen?: boolean;
   splash?: boolean;
@@ -18,7 +18,7 @@ class Layout extends Block<LayoutProps> {
     super(props);
 
     this.setProps({
-      onNavigateToOnboarding: () => this.props.router.go('#onboarding'),
+      onNavigateToOnboarding: () => this.props.router.go('/onboarding'),
     });
   }
 

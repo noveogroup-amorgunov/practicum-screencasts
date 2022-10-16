@@ -1,12 +1,12 @@
 import Block from 'core/Block';
 import { withUser, withStore, withRouter } from 'utils';
 import { logout } from 'services/auth';
-import { HashRouter, Store } from 'core';
+import { CoreRouter, Store } from 'core';
 
 import './styles.css';
 
 type ProfilePageProps = {
-  router: HashRouter;
+  router: CoreRouter;
   store: Store<AppState>;
   user: User | null;
   onLogout?: () => void;
