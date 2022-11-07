@@ -9,6 +9,8 @@ type OnboardingPageProps = {
   isLoading: boolean;
   onToggleAppLoading?: () => void;
   onNavigateNext?: () => void;
+  onModalOpen?: () => void;
+  modalIsOpened?: boolean
 };
 
 export class OnboardingPage extends Block<OnboardingPageProps> {
@@ -19,8 +21,26 @@ export class OnboardingPage extends Block<OnboardingPageProps> {
 
     this.setProps({
       onToggleAppLoading: () => this.onToggleAppLoading(),
-      onNavigateNext: () => this.onNavigateNext(),
+      onNavigateNext: this.onNavigateNext.bind(this),
+      onModalOpen: this.onModalOpen.bind(this),
+      onChildModalOpen: this.onChildModalOpen.bind(this),
     });
+  }
+
+  componentDidUpdate() {
+    if (window.store.getState().screen !== 'onboarding') {
+      return false;
+    }
+
+    return true;
+  }
+
+  onModalOpen() {
+    this.setProps({ modalIsOpened: true })
+  }
+
+  onChildModalOpen() {
+    this.setProps({ childModalIsOpened: true })
   }
 
   onNavigateNext() {
@@ -41,7 +61,6 @@ export class OnboardingPage extends Block<OnboardingPageProps> {
 
   render() {
     const user = this.props.store.getState().user;
-
     return `
     {{#Layout name="Onboarding" fullScreen=true}}
       <div class="onboarding-screen__content" data-testid="onboarding-screen">
@@ -54,10 +73,29 @@ export class OnboardingPage extends Block<OnboardingPageProps> {
         </div>
         {{{Button text="${user ? 'Profile': 'Login'}" onClick=onNavigateNext}}}
         {{{Button text="Toggle app loading" onClick=onToggleAppLoading}}}
+        {{{Button text="Open modal" onClick=onModalOpen}}}
       </div>
+      {{#Modal isOpened=modalIsOpened }}
+        Base modal 123
+        {{{Button text="Toggle app loading" onClick=onToggleAppLoading}}}
+        {{{Button text="Open child modal" onClick=onChildModalOpen}}}
+      {{/Modal}}
+      {{#Modal isOpened=childModalIsOpened }}
+        Child modal
+      {{/Modal}}
     {{/Layout}}
     `;
   }
 }
+
+/*
+// onModalOpen: this.onModalOpen.bind(this),
+// onModalClose: this.onModalClose.bind(this),
+// onChildModalOpen: this.onChildModalOpen.bind(this),
+// onChildModalClose: this.onChildModalClose.bind(this),
+
+
+
+*/
 
 export default withRouter(withStore(withIsLoading(OnboardingPage)));

@@ -1,0 +1,26 @@
+.modal {
+  background: #000;
+  width: 400px;
+  height: 200px;
+  color: #fff;
+  border-radius: 32px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal_hidden {
+  display: none;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  opacity: 0.5;
+  cursor: pointer;
+}

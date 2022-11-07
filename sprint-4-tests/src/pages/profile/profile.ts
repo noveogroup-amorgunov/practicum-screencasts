@@ -23,7 +23,17 @@ export class ProfilePage extends Block<ProfilePageProps> {
     });
   }
 
+  componentDidUpdate() {
+    if (window.store.getState().screen !== 'profile') {
+      return false;
+    }
+
+    return true;
+  }
+
   render() {
+    console.log('%c Profile block render', 'background: #1f9af3; color: #fff')
+  
     if (!this.props.user) {
       return `
         {{#Layout name="Profile" fullScreen=true}}

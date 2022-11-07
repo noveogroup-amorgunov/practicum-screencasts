@@ -16,9 +16,10 @@ export class Button extends Block {
   }
 
   protected render(): string {
+    console.log(`%c Button block render with id = ${this.id}`, 'background: #1f9af3; color: #fff')
     // language=hbs
     return `
-      <div class="button">
+      <div class="button" data-id="${this.id}">
         <button {{#if dataTestId}}data-testid="{{dataTestId}}"{{/if}} class="button__button" type="button">{{text}}</button>
       </div>
     `;

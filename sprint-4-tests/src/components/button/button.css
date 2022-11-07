@@ -4,6 +4,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .button__button {
@@ -21,4 +22,19 @@
 
 .button__button:hover {
   opacity: 0.8;
+}
+
+.button::after {
+  content: attr(data-id);
+  pointer-events: none;
+  border: 2px solid #fa0ee9;
+  position: absolute;
+  top: 0;
+  right: 5%;
+  box-sizing: border-box;
+  background: #fa0ee9;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0 5px;
 }

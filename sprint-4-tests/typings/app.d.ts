@@ -12,6 +12,8 @@ declare global {
     isLoading: boolean;
     loginFormError: string | null;
     user: User | null;
+
+    modals: Modal[]
   };
 
   export type User = {

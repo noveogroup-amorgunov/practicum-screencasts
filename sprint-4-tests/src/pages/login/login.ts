@@ -20,6 +20,7 @@ export class LoginPage extends Block<LoginPageProps> {
   }
 
   protected getStateFromProps() {
+    // TODO: Не использовать state
     this.state = {
       values: {
         login: '',

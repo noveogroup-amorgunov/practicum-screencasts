@@ -34,7 +34,7 @@ class Layout extends Block<LayoutProps> {
         <div class="screen__logo">
           {{{Logo onClick=onNavigateToOnboarding black=true}}}
         </div>
-        <div class="screen__content" data-layout=1></div>
+        <div class="screen__content" data-slot=1></div>
       </div>
     `;
   }

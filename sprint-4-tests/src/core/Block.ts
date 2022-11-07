@@ -21,13 +21,13 @@ export default class Block<P = any> {
   public id = nanoid(6);
 
   protected _element: Nullable<HTMLElement> = null;
-  protected readonly props: P;
+  protected props: Readonly<P>;
   protected children: { [id: string]: Block } = {};
 
   eventBus: () => EventBus<Events>;
 
   protected state: any = {};
-  protected refs: { [key: string]: HTMLElement } = {};
+  protected refs: { [key: string]: Record<string, Block<any>> } = {};
 
   public static componentName?: string;
 
@@ -36,7 +36,7 @@ export default class Block<P = any> {
 
     this.getStateFromProps(props);
 
-    this.props = this._makePropsProxy(props || ({} as P));
+    this.props = props || ({} as P);
     this.state = this._makePropsProxy(this.state);
 
     this.eventBus = () => eventBus;
@@ -109,13 +109,18 @@ export default class Block<P = any> {
     return true;
   }
 
-  setProps = (nextProps: Partial<P>) => {
-    if (!nextProps) {
+  setProps = (nextPartialProps: Partial<P>) => {
+    if (!nextPartialProps) {
       return;
     }
 
-    Object.assign(this.props, nextProps);
-  };
+    const prevProps = this.props
+    const nextProps = { ...prevProps, ...nextPartialProps }
+
+    this.props = nextProps
+
+    this.eventBus().emit(Block.EVENTS.FLOW_CDU, prevProps, nextProps);
+  }
 
   setState = (nextState: any) => {
     if (!nextState) {
@@ -171,6 +176,8 @@ export default class Block<P = any> {
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target: Record<string, unknown>, prop: string, value: unknown) {
+        // console.log('set new prop', self.id, self.constructor.componentName, target[prop], value)
+
         target[prop] = value;
 
         // Запускаем обновление компоненты
@@ -250,10 +257,11 @@ export default class Block<P = any> {
       /**
        * Ищем элемент layout-а, куда вставлять детей
        */
-      const layoutContent = content.querySelector('[data-layout="1"]');
+       const slotContent = content.querySelector('[data-slot="1"]') as HTMLDivElement;
 
-      if (layoutContent && stubChilds.length) {
-        layoutContent.append(...stubChilds);
+      if (slotContent && stubChilds.length) {
+        slotContent.append(...stubChilds);
+        delete slotContent.dataset.slot;
       }
     });
 
