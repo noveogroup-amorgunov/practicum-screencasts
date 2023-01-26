@@ -37,5 +37,6 @@ export async function renderBlock<T extends Object>({ Block, props, state = defa
 }
 
 export async function step(name: string, callback: () => void) {
+  console.log(`Step: ${name}`);
   await callback();
 }

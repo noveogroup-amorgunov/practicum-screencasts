@@ -1,5 +1,5 @@
 // import { rest } from 'msw';
-import { getByTestId, queryByTestId, waitFor } from '@testing-library/dom'
+import { getByTestId, prettyDOM, queryByTestId, waitFor } from '@testing-library/dom'
 import { renderBlock, step } from 'tests/renderUtils';
 import ProfilePage from './profile';
 
@@ -15,6 +15,8 @@ const USER_MOCK = {
 };
 
 describe('pages/Profile', () => {
+
+  // ИНТЕГРАЦИОННЫЙ-тест на пользовательский сценарий
   it('should logout from profile and redirect to onboarding', async () => {
     await step('render profile page to dom', () => {
       renderBlock({
